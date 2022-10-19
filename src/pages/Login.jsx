@@ -28,8 +28,8 @@ export default function Login() {
   };
 
   const validateForm = () => {
-    const { username, password } = values;
-    if (username === "") {
+    const { email, password } = values;
+    if (email === "") {
       toast.error("Email and Password is required.", toastOptions);
       return false;
     } else if (password === "") {
@@ -42,9 +42,9 @@ export default function Login() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (validateForm()) {
-      const { username, password } = values;
+      const { email, password } = values;
       const { data } = await axios.post(loginRoute, {
-        username,
+        email,
         password,
       });
       if (data.status === false) {
@@ -71,8 +71,8 @@ export default function Login() {
           </div>
           <input
             type="text"
-            placeholder="Username"
-            name="username"
+            placeholder="Email"
+            name="email"
             onChange={(e) => handleChange(e)}
             min="3"
           />
